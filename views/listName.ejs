@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <header>
+          <h1><%= list.name %> Todo list</h1>
+        </header>
+        <main>
+          <% list.items.forEach(function(item) { %>
+          <form action="/delete" method="post">
+            <div class="to-do-item">
+              <input
+                type="checkbox"
+                name="checkbox"
+                value="<%= item._id %>"
+                onchange="this.form.submit()"
+              />
+              <span><%= item.name %></span>
+            </div>
+            <input type="hidden" name="list" value="<%= list.name %>" />
+          </form>
+          <% }) %>
+          <form action="/" method="post">
+            <input type="hidden" name="list" value="<%= list.name %>" />
+            <div class="new-item-add">
+              <input
+                type="text"
+                name="newItem"
+                placeholder="New Item"
+                autofill="off"
+              />
+              <button type="submit">+</button>
+            </div>
+          </form>
+        </main>
+        <footer>&copy Rishabh Ajay Prakash, 2024</footer>
+      </div>
+    </div>
+  </body>
+  <script></script>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+  </head>
+  <body>
+    <h1><%= list.name %> Todo list, <%= kindOfDay %></h1>
+    <ul>
+      <% list.items.forEach(function(item) { %>
+      <form action="/d" method="post">
+        <div>
+          <input
+            type="checkbox"
+            name="checkbox"
+            value="<%= item._id %>"
+            onchange="this.form.submit()"
+          />
+          <p><%= item.name %></p>
+        </div>
+      </form>
+      <% }); %>
+      <form action="/addCustomListItem" method="post">
+        <input type="text" name="newCustomListItem" autofill="off" />
+        <button type="submit">Add</button>
+      </form>
+    </ul>
+  </body>
+</html> -->
